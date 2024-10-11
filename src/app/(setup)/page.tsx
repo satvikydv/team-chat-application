@@ -23,7 +23,7 @@ const SetupPage = async () => {
     });
 
     if(server){
-        redirect(`/server/${server.id}`);
+        return redirect(`/servers/${server.id}`);
     }
     return (
         <div>

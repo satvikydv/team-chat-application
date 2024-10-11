@@ -1,7 +1,10 @@
 "use client";
 
+import axios from "axios";
 import * as z from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import {
@@ -24,8 +27,9 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import { useEffect } from "react";
+
+import { FileUpload } from "@/components/file-upload";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
     name: z.string().min(1, {
@@ -38,6 +42,8 @@ const formSchema = z.object({
 
 export const InitialModal = () => {
     const [isMounted, setIsMounted] = useState(false);
+
+    const router = useRouter();
 
     useEffect(() => {
         setIsMounted(true);
@@ -53,8 +59,17 @@ export const InitialModal = () => {
 
     const isLoading = form.formState.isSubmitting;
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        console.log(values);
-    };
+        try {
+            console.log("values: ", values);   
+            await axios.post("/api/servers", values);
+
+            form.reset();
+            router.refresh();
+            window.location.reload(); 
+        } catch (error) {
+            console.error("this error ", error);
+        }
+    };  
 
     if(!isMounted){
         return null;
@@ -65,7 +80,7 @@ export const InitialModal = () => {
             <DialogContent className="bg-white text-black p-0 overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
                     <DialogTitle className="text-2xl text-center font-bold">
-                        Customize your server!
+                        Customize your space!
                     </DialogTitle>
                     <DialogDescription className="text-center text-zinc-500">
                         We're glad you're here. Let's get started by setting up your Server.
@@ -76,7 +91,21 @@ export const InitialModal = () => {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                         <div className="space-y-8 px-6">
                             <div className="flex items-center justify-center text-center">
-                                TODO: Image 
+                                <FormField
+                                control={form.control}
+                                name="imageUrl"
+                                render={({field}) => (
+                                    <FormItem>
+                                        <FormControl>
+                                            <FileUpload
+                                            endpoint="serverImage"
+                                            value={field.value}
+                                            onChange={field.onChange}                                          
+                                            />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                                /> 
                             </div>
                             <FormField 
                             control={form.control}
