@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
+
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ModalProvider } from "@/components/providers/modal-provider";
+
+import { NavigationSidebar } from "@/components/navigation/navigation-sidebar";
 
 
 const font = Open_Sans({ subsets: ["latin"] });
@@ -27,13 +31,18 @@ export default function RootLayout({
           font.className,
           "bg-white dark:bg-[#202020]"
           )}>
+          
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem={false}
             storageKey="tca-theme"
           >
+            {/* <NavigationSidebar /> */}
+            {/* <ModalProvider /> */}
+            <div>
             {children}
+            </div>
           </ThemeProvider>
           </body>
       </html>

@@ -1,4 +1,5 @@
 import { NavigationSidebar } from "@/components/navigation/navigation-sidebar";
+import { ModalProvider } from "@/components/providers/modal-provider";
 
 const MainLayout = async ({
     children
@@ -7,6 +8,7 @@ const MainLayout = async ({
 }) => {
     return (
         <div className="h-full">
+            {/* <ModalProvider /> */}
             <div className="hidden md:flex h-full w-[72px] z-30 flex-col fixed inset-y-0">
                 <NavigationSidebar />
             </div>
