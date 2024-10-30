@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { db } from '@/lib/db';
 import { ChannelType } from '@prisma/client';
 import { ServerHeader } from './server-header';
+import { ScrollArea } from '../ui/scroll-area';
 
 
 interface ServerSidebarProps {
@@ -58,6 +59,8 @@ const ServerSidebar = async ({
         server={server}
         role={role}
       />
+
+      
     </div>
   )
 }
