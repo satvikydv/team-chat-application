@@ -64,6 +64,7 @@ import { ModalProvider } from "@/components/providers/modal-provider";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import { SocketProvider } from "@/components/providers/socket-provider";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -90,10 +91,10 @@ export default function RootLayout({
             enableSystem
             storageKey="discord-clone-theme"
           >
-            
+            <SocketProvider>
               <ModalProvider />
               <div>{children}</div>
-            
+            </SocketProvider>
           </ThemeProvider>
         </body>
       </html>
