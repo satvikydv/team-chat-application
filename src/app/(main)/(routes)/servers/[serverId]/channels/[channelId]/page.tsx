@@ -6,8 +6,8 @@ import { ChannelType } from "@prisma/client";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { ChatHeader } from "@/components/chat/chat-header";
-// import { ChatInput } from "@/components/chat/chat-input";
-// import { ChatMessages } from "@/components/chat/chat-messages";
+import { ChatInput } from "@/components/chat/chat-input";
+import { ChatMessages } from "@/components/chat/chat-messages";
 // import { MediaRoom } from "@/components/media-room";
 
 interface ChannelIdPageProps {
@@ -41,7 +41,7 @@ export default async function ChannelIdPage({
         serverId={channel.serverId}
         type="channel"
       />
-      {/* {channel.type === ChannelType.TEXT && (
+      {channel.type === ChannelType.TEXT && (
         <>
           <ChatMessages
             member={member}
@@ -68,7 +68,7 @@ export default async function ChannelIdPage({
           />
         </>
       )}
-      {channel.type === ChannelType.AUDIO && (
+      {/* {channel.type === ChannelType.AUDIO && (
         <MediaRoom chatId={channel.id} video={false} audio={true} />
       )}
       {channel.type === ChannelType.VIDEO && (
