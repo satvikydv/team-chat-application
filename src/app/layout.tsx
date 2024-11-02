@@ -65,6 +65,7 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { SocketProvider } from "@/components/providers/socket-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -93,7 +94,9 @@ export default function RootLayout({
           >
             <SocketProvider>
               <ModalProvider />
+              <QueryProvider>
               <div>{children}</div>
+              </QueryProvider>
             </SocketProvider>
           </ThemeProvider>
         </body>
