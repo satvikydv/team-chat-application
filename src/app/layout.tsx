@@ -70,9 +70,9 @@ import { QueryProvider } from "@/components/providers/query-provider";
 const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Discord Clone",
+  title: "Team Chat Application",
   description:
-    "Discord Clone with Next.js, React.js, TailWindCSS & TypeScript."
+    "Minor project for sem 5, Team Chat Application",
 };
 
 export default function RootLayout({

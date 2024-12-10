@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Channel, ChannelType, MemberRole, Server } from "@prisma/client";
-import { Edit, Hash, Lock, Mic, Trash, Video } from "lucide-react";
+import { Edit, Text, Lock, AudioLines, Trash, TvMinimalPlay } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
@@ -16,9 +16,9 @@ interface ServerChannelProps {
 }
 
 const iconMap = {
-  [ChannelType.TEXT]: Hash,
-  [ChannelType.AUDIO]: Mic,
-  [ChannelType.VIDEO]: Video
+  [ChannelType.TEXT]: Text,
+  [ChannelType.AUDIO]: AudioLines,
+  [ChannelType.VIDEO]: TvMinimalPlay
 };
 
 export function ServerChannel({

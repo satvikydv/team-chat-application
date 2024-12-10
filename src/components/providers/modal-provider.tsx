@@ -27,15 +27,15 @@ function ModalProvider() {
     return (
         <div>
             <InviteModal />
-            {/* <CreateServerModal /> */}
-            {/* <EditServerModal /> */}
+            <CreateServerModal />
+            <EditServerModal />
             <MembersModal />
             <CreateChannelModal />
             <LeaveServerModal />
             <DeleteServerModal />
             <DeleteChannelModal />
             <EditChannelModal />
-            {/* <MessageFileModal /> */}
+            <MessageFileModal />
             <DeleteMessageModal />
         </div>
     );
